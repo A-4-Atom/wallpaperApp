@@ -18,18 +18,21 @@ if (!apikey) {
 
 const client = createClient("reqlAVxrC2yRXxU0xDlImYeaPsXJ1zKyl0u22K9ZBieLPGoyxlh2Labm");
 
-app.get('/', async (req, res) => {
-    const query = req.query.query || 'tourism';
+// app.get('/', async (req, res) => {
+//     const query = req.query.query || 'tourism';
 
-    try {
-        const photos = await client.photos.search({ query, per_page: 30 });
-        const photoUrls = photos.photos.map(photo => photo.src.medium);
-        res.json({ urls: Array.isArray(photoUrls) ? photoUrls : [] });
-    } catch (error) {
-        console.error('Error fetching photos:', error);
-        res.status(500).json({ error: 'Error fetching photos' });
-    }
-});
+//     try {
+//         const photos = await client.photos.search({ query, per_page: 30 });
+//         const photoUrls = photos.photos.map(photo => photo.src.medium);
+//         res.json({ urls: Array.isArray(photoUrls) ? photoUrls : [] });
+//     } catch (error) {
+//         console.error('Error fetching photos:', error);
+//         res.status(500).json({ error: 'Error fetching photos' });
+//     }
+// });
+
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

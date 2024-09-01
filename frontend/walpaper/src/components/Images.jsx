@@ -10,7 +10,9 @@ function Images({ toggleSearch }) {
   useEffect(() => {
     async function fetchImage(query) {
       try {
-        const response = await fetch(`http://localhost:5000?query=${encodeURIComponent(query)}`);
+        // use localhost when developing http://localhost:5000 
+        // use vercel link when pushing changes to github
+        const response = await fetch(`https://wallpaper-app-five.vercel.app/?query=${encodeURIComponent(query)}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
